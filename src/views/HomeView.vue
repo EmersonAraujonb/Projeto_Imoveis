@@ -1,17 +1,17 @@
 <template>
   <div>
-    <LoginHomePage/>
+    <LoginHomePage />
   </div>
 </template>
 
 <script>
-
-import LoginHomePage from '@/components/LoginHomePage.vue'
+import LoginHomePage from "@/components/LoginHomePage.vue";
 
 export default {
-  name: 'HomeView',
+  name: "HomeView",
   components: {
-    LoginHomePage
-  }
-}
+    LoginHomePage,
+  },
+};
+console.table(["Emerson", "Maria", "Joâo", "Pedro"]);
 </script>
