@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <nav>
-      <a href="/"><img src="./assets/logoHome.png" alt="" /></a>
-      <router-link to="/LoginCadastro">Login | Cadastro</router-link>
+      <a href="/"><img src="./assets/logoHome.png" alt="logoHome" /></a>
       <router-link to="/">Home</router-link>
+      <router-link to="/LoginCadastro">Login | Cadastro</router-link>
       <router-link to="/financiamento">Financiamento</router-link>
       <router-link to="/about">Mural</router-link>
     </nav>

@@ -1,16 +1,22 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import LoginCadastro from '@/views/LoginCadastro.vue'
 import CadastroHomePage from '../views/CadastroHomePage.vue'
 import LoginHomePage from '../components/LoginHomePage.vue'
+
 
 Vue.use(VueRouter)
 
 const routes = [
+ {
+   path: '/',
+   name: '/',
+   component: () => import('../views/HomePage.vue')
+ },
   {
-    path: '/',
-    name: 'home',
-    component: HomeView
+    path: '/LoginCadastro',
+    name: 'Login|Cadastro',
+    component:  () => import('../views/LoginCadastro.vue')
   },
   {
     path: '/about',
@@ -36,12 +42,6 @@ const routes = [
 
     component: () => import('../components/LoginHomePage.vue')
   },
-  {
-    path: '/LoginCadastro',
-    name: 'LoginCadastro',
-
-    component: () => import('../views/LoginCadastro.vue')
-  }
 ]
 
 const router = new VueRouter({
