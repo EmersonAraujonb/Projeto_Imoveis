@@ -81,6 +81,5 @@ img {
   height: 400px;
   right: -80px;
 }
-</style>>
-
 </style>
+
