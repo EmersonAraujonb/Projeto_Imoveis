@@ -2,10 +2,10 @@
   <div id="app">
     <nav>
       <a href="/"><img src="./assets/logoHome.png" alt="logoHome" /></a>
-      <router-link to="/">Home</router-link>
+      <router-link to="/">Inicio</router-link>
       <router-link to="/LoginCadastro">Login | Cadastro</router-link>
-      <router-link to="/financiamento">Financiamento</router-link>
-      <router-link to="/about">Mural</router-link>
+      <router-link to="/CompraVenda">Compra e Venda</router-link>
+      <router-link to="/about">Sobre</router-link>
     </nav>
     <router-view />
     <br />
@@ -20,15 +20,6 @@
     </footer>
   </div>
 </template>
-
-<script>
-export default {
-  methods: {
-  },
-};
-console.log('okay-01')
-</script>
-
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -55,5 +46,8 @@ nav a {
 nav a.router-link-exact-active {
   color: #000000;
   text-decoration: none;
+}
+.router-link-exact-active:hover, a:hover{
+  color: rgb(2, 225, 255);
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Financiamentos</h1>
+    <h1>Compre e venda seu imóvel.</h1>
     <img src="../assets/imgTwo.jpg" alt="" />
   </div>
 </template>

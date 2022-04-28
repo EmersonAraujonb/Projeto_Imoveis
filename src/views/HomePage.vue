@@ -1,26 +1,85 @@
 <template>
-    <div>
-        <h1>Encontre o imovél perfeito.</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum sequi dicta, maxime, repellendus cupiditate necessitatibus fugiat perspiciatis labore delectus numquam excepturi quos dolore perferendis incidunt sit illo hic laboriosam cum!
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio repellendus amet enim sed rerum autem minima odit sunt veritatis mollitia illo necessitatibus, praesentium consectetur voluptatibus ipsum illum voluptas perspiciatis beatae?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto a temporibus vero illo blanditiis, reiciendis eligendi commodi! Ducimus omnis commodi similique libero ullam! Cumque quod dolore totam! Amet, iure sunt?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, quis placeat! Doloremque ipsam voluptatum animi? Voluptates eveniet reprehenderit debitis consectetur ex, ipsum autem accusantium doloribus blanditiis sequi commodi a adipisci.
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. In non voluptate dolore blanditiis sit, doloremque incidunt. Asperiores fuga possimus enim error impedit consequatur similique dolorum laudantium atque! Harum, est quos.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, earum facere mollitia aut amet similique eaque nam est magni quidem pariatur reprehenderit. Autem veritatis fuga blanditiis debitis tenetur eligendi officiis?
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque eveniet exercitationem voluptates nihil sint neque error culpa quis dignissimos sequi quidem vel, suscipit ex natus, reprehenderit necessitatibus molestias. Vel, possimus.
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem eligendi dolore adipisci enim quae laborum mollitia autem. Beatae corrupti voluptate, nesciunt nam deleniti, fuga odit excepturi, quaerat harum obcaecati laudantium!
-        </p>
-    </div>
+  <div class="container">
+    <img src="../assets/imagemHome.jpg" alt="predio" />
+    <h1>Encontre o imovél perfeito.</h1>
+    <p class="lgdImg1">
+      Compra e venda de imóveis, sem burocracia e enrolaçâo? É com a gente!
+      Corretores com experiência no mercado e taxas justas que vão fazer você
+      sorrir demais. Entre em contato com a nossa equipe para ter a melhor
+      solução para o seu problema.
+    </p>
+    <img class="imgHome2" src="../assets/imagemHome2.jpg" alt="casa" />
+    <p class="lgdImg2">
+      Se você precisa de um imóvel, mas está cansado dessa jornada de busca que
+      nunca da em nada, eu vou te ajudar! Com a melhor equipe do mercado e anos
+      de experiência, em apenas uma conversa eu consigo encontrar o que tem de
+      melhor para você, dentro do seu orçamento. Entre em contato com a nossa
+      corretora para que posssamos te ajudar nessa jornada!
+    </p>
+  </div>
 </template>
 <script>
-import HomePage from '../views/HomePage.vue'
+import HomePage from "../views/HomePage.vue";
 export default {
-    name: HomePage,
-}
+  name: HomePage,
+};
 </script>
 <style scoped>
-h1{
-    color:rgb(0, 255, 145);
+body {
+  width: 100%;
+}
+h1 {
+  top: 180px;
+  color: rgb(14, 40, 50);
+  position: absolute;
+  left: 500px;
+}
+.container {
+  display: flex;
+  background-color: rgb(237, 234, 234);
+  border-radius: 5%;
+}
+.lgdImg1 {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  text-align: justify;
+  text-indent: 20px;
+  margin: 180px 10px;
+  display: flex;
+  position: absolute;
+  width: 500px;
+  left: 450px;
+}
+.lgdImg2 {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  text-align: justify;
+  text-indent: 20px;
+  margin: 550px 10px;
+  display: flex;
+  position: absolute;
+  width: 500px;
+  left: 30px;
+}
+p::first-letter {
+  font-size: 150%;
+}
+img {
+  padding: 30px;
+  width: 400px;
+  height: 400px;
+}
+.imgHome2 {
+  display: flex;
+  position: relative;
+  margin-top: 400px;
+  width: 400px;
+  height: 400px;
+  right: -80px;
 }
 </style>>
 

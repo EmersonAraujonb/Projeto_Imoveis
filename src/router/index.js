@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import LoginCadastro from '@/views/LoginCadastro.vue'
-import CadastroHomePage from '../views/CadastroHomePage.vue'
+import CadastroHomePage from '../components/CadastroHomePage.vue'
 import LoginHomePage from '../components/LoginHomePage.vue'
+import CompraVenda from '@/views/CompraVenda.vue'
 
 
 Vue.use(VueRouter)
@@ -21,25 +22,21 @@ const routes = [
   {
     path: '/about',
     name: 'about',
-   
     component: () => import('../views/AboutView.vue')
   },
   {
-    path: '/financiamento',
-    name: 'financiamento',
-
-    component: () => import('../views/Financiamento.vue')
+    path: '/CompraVenda',
+    name: 'compra e venda',
+    component: () => import('../views/CompraVenda.vue')
   },
   {
     path: '/CadastroHomePage',
     name: 'CadastroHomePage',
-
-    component: () => import('../views/CadastroHomePage.vue')
+    component: () => import('../components/CadastroHomePage.vue')
   },
   {
     path: '/LoginHomePage',
     name: 'LoginHomePage',
-
     component: () => import('../components/LoginHomePage.vue')
   },
 ]
