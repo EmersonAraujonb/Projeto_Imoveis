@@ -70,6 +70,7 @@ export default {
     },
   },
 };
+console.log("cadastro.vue")
 </script>
 <style scoped>
 #navbarCadastro {

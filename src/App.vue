@@ -20,6 +20,24 @@
     </footer>
   </div>
 </template>
+<script>
+import axios from "axios";
+export default {
+  name: 'app',
+  data() {
+    return {
+      user: {},
+    };
+  },
+  methods: {
+    getUsers() {
+      axios.get("https://randomuser.me/api/").then((res) => {
+        this.user = res.data;
+      })
+    },
+  },
+};
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

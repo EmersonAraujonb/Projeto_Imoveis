@@ -45,12 +45,6 @@ export default {
   data() {
     return {};
   },
-  methods: {
-    created() {
-      //   const rest = api.post("auth/login", this.data);
-      console.log("CHEGOU!");
-    },
-  },
 };
 </script>
 <style scoped>
