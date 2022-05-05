@@ -11,32 +11,36 @@
             ><button class="login">Login</button></router-link
           >
         </nav>
-        <form>
+        <form @submit="login">
           <input
             type="name"
             class="input-box"
             placeholder="Seu Nome..."
+            v-model="name"
             required
           />
           <input
             type="sobrenome"
             class="input-box"
             placeholder="Seu Sobrenome..."
+            v-model="last_name"
             required
           />
           <input
             type="email"
             class="input-box"
             placeholder="Seu Email..."
+            v-model="email"
             required
           />
           <input
             type="password"
             class="input-box"
             placeholder="Sua Senha..."
-            required
+            v-model="password"
+            required 
           />
-          <button type="submit" class="submit-btn">Cadastrar</button>
+          <button type="submit" class="submit-btn"><i class="fa-solid fa-user-plus"></i> Cadastrar </button>
         </form>
         <a href="">Esqueceu a Senha?</a>
         <br />
@@ -52,25 +56,34 @@
   </div>
 </template>
 <script>
-import api from "../api";
+import api from "./../api";
 export default {
-  name: "LoginHomePage",
+  name: "CadastroHomePage",
   data() {
     return {
-      data: {
-        // email: "emerete@gmnaiulo.com",
-        // password: "12321313",
-      },
+      name: null,
+      last_name: null,
+      email: null,
+      password: null,
     };
   },
   methods: {
-    created() {
-      //   const rest = api.post("auth/login", this.data);
-      console.log("CHEGOU!");
+    async login(e) {
+      e.preventDefault();
+
+      const resp = await api.post("auth", {
+        name: this.name,
+        last_name: this.last_name,
+        email: this.email,
+        password: this.password,
+      });
+      const token = resp.data.data.token;
+      localStorage.setItem("token", token);
+      
+      console.log(token);
     },
   },
 };
-console.log("cadastro.vue")
 </script>
 <style scoped>
 #navbarCadastro {

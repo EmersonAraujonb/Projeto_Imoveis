@@ -11,20 +11,24 @@
             ><button class="cadastro">Cadastre-se</button></router-link
           >
         </nav>
-        <form>
+        <form @submit="login">
           <input
             type="email"
             class="input-box"
             placeholder="Seu Email..."
+            v-model="email"
             required
           />
           <input
             type="password"
             class="input-box"
             placeholder="Sua Senha..."
+            v-model="password"
             required
           />
-          <button type="submit" class="submit-btn">Login</button>
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-sign-in-alt" /> Login
+          </button>
         </form>
         <a href="">Esqueceu a Senha?</a>
         <br />
@@ -40,10 +44,30 @@
   </div>
 </template>
 <script>
+import api from "./../api";
 export default {
   name: "LoginHomePage",
   data() {
-    return {};
+    return {
+      email: null,
+      password: null,
+    };
+  },
+
+  methods: {
+    async login(e) {
+      e.preventDefault();
+
+      const resp = await api.post("auth/login", {
+        email: this.email,
+        password: this.password,
+      });
+
+      const token = resp.data.data.token;
+      localStorage.setItem("token", token);
+      
+      console.log(token);
+    },
   },
 };
 </script>
@@ -75,10 +99,6 @@ img {
   width: 100%;
   height: 600px;
 }
-/* #eye{
-    display: flex;
-    top: 15px;
-} */
 hr {
   border-color: black;
   box-shadow: 5px 7px 3px 0 #00000080;

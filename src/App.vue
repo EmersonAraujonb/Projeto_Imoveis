@@ -1,13 +1,15 @@
 <template>
   <div id="app">
     <nav>
-      <a href="/"><img src="./assets/logoHome.png" alt="logoHome" /></a>
-      <router-link to="/">Inicio</router-link>
-      <router-link to="/LoginCadastro">Login | Cadastro</router-link>
-      <router-link to="/CompraVenda">Compra e Venda</router-link>
-      <router-link to="/about">Sobre</router-link>
+      <a href="/"><img src="./assets/NewLogo.png" alt="logoHome" /></a>
+      <router-link to="/"><i class="fa-solid fa-house"></i> Home</router-link>
+      <router-link to="/LoginCadastro"><i class="fa-solid fa-user-plus"></i> Login / Cadastro  </router-link>
+      <router-link to="/CompraVenda"><i class="fa-solid fa-bag-shopping"></i> Compra e Venda</router-link>
+      <router-link to="/about"><i class="fa-solid fa-ban"></i> Sobre</router-link>
     </nav>
+    <transition name="fade" mode="out-in">
     <router-view />
+    </transition>
     <br />
     <hr />
     <br />
@@ -45,6 +47,14 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+.fade-enter-active, .fade-leave-active {
+transition-duration: 1.0s;
+transition-property: opacity;
+transition-timing-function: ease;
+}
+.fade-enter, .fade-leave {
+  opacity: 0;
 }
 
 nav {
