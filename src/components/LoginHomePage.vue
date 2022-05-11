@@ -11,29 +11,41 @@
             ><button class="cadastro">Cadastre-se</button></router-link
           >
         </nav>
+        <v-snackbar
+          v-model="showSnackbar"
+          absolute
+          top
+          dark
+        >
+          {{ msgError }}</v-snackbar
+        >
         <form @submit="login">
           <input
             type="email"
             class="input-box"
             placeholder="Seu Email..."
             v-model="email"
+            autocomplete="off"
             required
           />
+          <span></span>
           <input
             type="password"
             class="input-box"
             placeholder="Sua Senha..."
             v-model="password"
+            autocomplete="off"
             required
           />
-          <button type="submit" class="submit-btn">
+          <span></span>
+          <button @click="error, clearInput" type="submit" class="submit-btn">
             <i class="fas fa-sign-in-alt" /> Login
           </button>
         </form>
         <a href="">Esqueceu a Senha?</a>
         <br />
         <hr />
-        <div id="cadastro">
+        <div>
           <br />
           <p>
             Nao tem uma conta? <a href="/CadastroHomePage"> Cadastre-se </a>
@@ -49,6 +61,8 @@ export default {
   name: "LoginHomePage",
   data() {
     return {
+      msgError: "Email e senhas inválidos!",
+      showSnackbar: false,
       email: null,
       password: null,
     };
@@ -58,15 +72,19 @@ export default {
     async login(e) {
       e.preventDefault();
 
-      const resp = await api.post("auth/login", {
-        email: this.email,
-        password: this.password,
-      });
-
-      const token = resp.data.data.token;
-      localStorage.setItem("token", token);
-      
-      console.log(token);
+      try {
+        const resp = await api.post("auth/login", {
+          email: this.email,
+          password: this.password,
+        });
+        window.location.href = "./CompraVenda";
+        const token = resp.data.data.token;
+        localStorage.setItem("token", token);
+        console.log(token);
+      } catch (e) {
+        this.error = e.message;
+        this.showSnackbar = true;
+      }
     },
   },
 };
@@ -81,6 +99,7 @@ export default {
   margin-bottom: 30px;
 }
 .login {
+  border: 1px solid rgb(0, 0, 0);
   width: 100px;
   height: 50px;
   cursor: pointer;
@@ -88,6 +107,7 @@ export default {
   border-radius: 8px;
 }
 .cadastro {
+  border: 1px solid rgb(0, 0, 0);
   width: 100px;
   height: 50px;
   cursor: pointer;
@@ -132,11 +152,11 @@ hr {
 }
 .card {
   width: 350px;
-  height: 400px;
+  height: 450px;
   box-shadow: 15px 20px 3px 0 #00000080;
   border-radius: 8px;
   background-color: rgb(212, 228, 223);
-  padding-top: 30px;
+  padding-top: 60px;
   position: absolute;
 }
 .inner-box {
@@ -164,7 +184,7 @@ hr {
 }
 button.submit-btn {
   width: 50%;
-  border: 1px solid rgb(0, 0, 0);
+  border: 2px solid rgb(0, 0, 0);
   margin: 35px 0 10px;
   height: 32px;
   font-size: 12px;
@@ -202,5 +222,37 @@ footer {
 footer p {
   text-decoration: black;
   color: rgba(0, 0, 0, 0.981);
+}
+p {
+  color: red;
+}
+input:invalid {
+  border-color: red;
+}
+input:valid {
+  border-color: green;
+}
+input:focus {
+  border-color: blue !important;
+}
+span {
+  position: relative;
+}
+input:invalid + span::before {
+  content: "✖";
+  color: red;
+}
+input:valid + span::before {
+  content: "✓";
+  color: green;
+}
+input + span::before {
+  position: absolute;
+  right: 10px;
+  top: 2px;
+}
+#img {
+  width: 20px;
+  height: 20px;
 }
 </style>

@@ -11,7 +11,15 @@
             ><button class="login">Login</button></router-link
           >
         </nav>
-        <form @submit="login">
+         <v-snackbar
+          v-model="showSnackbar"
+          absolute
+          top
+          color="sucess"
+        >
+          {{ msgSucess }} {{msgError}}</v-snackbar
+        >
+        <form @submit="cadastrar">
           <input
             type="name"
             class="input-box"
@@ -19,6 +27,7 @@
             v-model="name"
             required
           />
+          <span></span>
           <input
             type="sobrenome"
             class="input-box"
@@ -26,6 +35,7 @@
             v-model="last_name"
             required
           />
+          <span></span>
           <input
             type="email"
             class="input-box"
@@ -33,19 +43,23 @@
             v-model="email"
             required
           />
+          <span></span>
           <input
             type="password"
             class="input-box"
             placeholder="Sua Senha..."
             v-model="password"
-            required 
+            required
           />
-          <button type="submit" class="submit-btn"><i class="fa-solid fa-user-plus"></i> Cadastrar </button>
+          <span></span>
+          <button @click="cadastrar" type="submit" class="submit-btn">
+            <i class="fa-solid fa-user-plus"></i> Cadastrar
+          </button>
         </form>
         <a href="">Esqueceu a Senha?</a>
         <br />
         <hr />
-        <div id="cadastro">
+        <div>
           <br />
           <p>
             Já tem uma conta? Faça login<a href="/LoginHomePage"> Login </a>
@@ -65,22 +79,26 @@ export default {
       last_name: null,
       email: null,
       password: null,
+      msgSucess: "Cadastro realizado com sucesso!",
+      msgError: "Usuário já cadastrado com esses dados!",
+      showSnackbar: false,
     };
   },
   methods: {
-    async login(e) {
+    async cadastrar(e) {
       e.preventDefault();
 
-      const resp = await api.post("auth", {
-        name: this.name,
-        last_name: this.last_name,
-        email: this.email,
-        password: this.password,
-      });
-      const token = resp.data.data.token;
-      localStorage.setItem("token", token);
-      
-      console.log(token);
+      try {
+         this.showSnackbar
+        const resp = await api.post("auth", {
+          name: this.name,
+          last_name: this.last_name,
+          email: this.email,
+          password: this.password,
+        });
+      } catch (e) {
+        !this.showSnackbar
+      }
     },
   },
 };
@@ -95,14 +113,19 @@ export default {
   margin-bottom: 30px;
 }
 .login {
+  color: black;
   width: 100px;
   height: 50px;
   cursor: pointer;
   background-color: rgb(255, 255, 255);
   box-shadow: 5px 7px 3px 0 #00000080;
   border-radius: 8px;
+}
+.login:hover {
+  background-color: rgb(97, 97, 240);
 }
 .cadastro {
+  color: black;
   width: 100px;
   height: 50px;
   cursor: pointer;
@@ -110,6 +133,10 @@ export default {
   box-shadow: 5px 7px 3px 0 #00000080;
   border-radius: 8px;
 }
+.cadastro:hover {
+  background-color: rgb(97, 97, 240);
+}
+
 img {
   position: relative;
   width: 100%;
@@ -148,10 +175,10 @@ hr {
 }
 .card {
   width: 500px;
-  height: 500px;
+  height: 550px;
   box-shadow: 15px 20px 3px 0 #00000080;
   border-radius: 8px;
-  background-color: rgb(111, 103, 226);
+  background-color: rgb(187, 184, 234);
   padding-top: 30px;
   position: absolute;
 }
@@ -218,5 +245,30 @@ footer {
 footer p {
   text-decoration: black;
   color: rgba(0, 0, 0, 0.981);
+}
+input:invalid {
+  border-color: red;
+}
+input:valid {
+  border-color: green;
+}
+input:focus {
+  border-color: blue !important;
+}
+span {
+  position: relative;
+}
+input:invalid + span::before {
+  content: "✖";
+  color: red;
+}
+input:valid + span::before {
+  content: "✓";
+  color: green;
+}
+input + span::before {
+  position: absolute;
+  right: 10px;
+  top: 1px;
 }
 </style>

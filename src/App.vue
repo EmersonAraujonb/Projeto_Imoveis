@@ -4,8 +4,6 @@
       <a href="/"><img src="./assets/NewLogo.png" alt="logoHome" /></a>
       <router-link to="/"><i class="fa-solid fa-house"></i> Home</router-link>
       <router-link to="/LoginCadastro"><i class="fa-solid fa-user-plus"></i> Login / Cadastro  </router-link>
-      <router-link to="/CompraVenda"><i class="fa-solid fa-bag-shopping"></i> Compra e Venda</router-link>
-      <router-link to="/about"><i class="fa-solid fa-ban"></i> Sobre</router-link>
     </nav>
     <transition name="fade" mode="out-in">
     <router-view />
