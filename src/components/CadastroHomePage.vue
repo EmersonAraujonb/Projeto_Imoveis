@@ -11,13 +11,13 @@
             ><button class="login">Login</button></router-link
           >
         </nav>
-         <v-snackbar
-          v-model="showSnackbar"
+        <v-snackbar
+          v-model="snackbar.show"
           absolute
           top
-          color="sucess"
+          :color="snackbar.color"
         >
-          {{ msgSucess }} {{msgError}}</v-snackbar
+          {{ snackbar.message }}</v-snackbar
         >
         <form @submit="cadastrar">
           <input
@@ -52,17 +52,19 @@
             required
           />
           <span></span>
-          <button @click="cadastrar" type="submit" class="submit-btn">
+          <button type="submit" class="submit-btn">
             <i class="fa-solid fa-user-plus"></i> Cadastrar
           </button>
         </form>
-        <a href="">Esqueceu a Senha?</a>
         <br />
         <hr />
         <div>
           <br />
           <p>
-            Já tem uma conta? Faça login<a href="/LoginHomePage"> Login </a>
+            <br />
+            <br /><strong>
+              Já tem uma conta? Faça login<a href="/LoginHomePage"> Login </a>
+            </strong>
           </p>
         </div>
       </div>
@@ -75,13 +77,15 @@ export default {
   name: "CadastroHomePage",
   data() {
     return {
+      snackbar: {
+        show: false,
+        message: null,
+        color: null,
+      },
       name: null,
       last_name: null,
       email: null,
       password: null,
-      msgSucess: "Cadastro realizado com sucesso!",
-      msgError: "Usuário já cadastrado com esses dados!",
-      showSnackbar: false,
     };
   },
   methods: {
@@ -89,15 +93,23 @@ export default {
       e.preventDefault();
 
       try {
-         this.showSnackbar
         const resp = await api.post("auth", {
           name: this.name,
           last_name: this.last_name,
           email: this.email,
           password: this.password,
         });
+        this.snackbar = {
+          message: "Usuário cadastrado com sucesso!",
+          color: "#2E7D32",
+          show: true,
+        };
       } catch (e) {
-        !this.showSnackbar
+        this.snackbar = {
+          message: "Usuário já cadastrado com esses dados!",
+          color: "#E53935",
+          show: true,
+        };
       }
     },
   },
@@ -207,10 +219,10 @@ hr {
 }
 button.submit-btn {
   width: 50%;
-  border: 1px solid rgb(0, 0, 0);
+  border: 2px solid rgb(0, 0, 0);
   margin: 35px 0 10px;
   height: 32px;
-  font-size: 12px;
+  font-size: 16px;
   border-radius: 20px;
   padding: 0 10px;
   color: rgb(0, 0, 0);
@@ -222,7 +234,7 @@ span {
   font-size: 12px;
 }
 .card a {
-  color: rgb(255, 255, 255);
+  color: rgb(255, 0, 0);
   display: block;
   text-align: center;
   font-size: 13px;

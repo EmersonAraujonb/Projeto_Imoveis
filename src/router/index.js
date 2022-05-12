@@ -9,6 +9,11 @@ import CompraVenda from '@/views/CompraVenda.vue'
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '*',
+    name: 'error404',
+    component: () => import('../views/Error404.vue')
+  },
  {
    path: '/',
    name: '/',

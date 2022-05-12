@@ -11,12 +11,7 @@
             ><button class="cadastro">Cadastre-se</button></router-link
           >
         </nav>
-        <v-snackbar
-          v-model="showSnackbar"
-          absolute
-          top
-          dark
-        >
+        <v-snackbar v-model="showSnackbar" absolute top  color="#E53935" multiLine="true">
           {{ msgError }}</v-snackbar
         >
         <form @submit="login">
@@ -38,7 +33,7 @@
             required
           />
           <span></span>
-          <button @click="error, clearInput" type="submit" class="submit-btn">
+          <button type="submit" class="submit-btn">
             <i class="fas fa-sign-in-alt" /> Login
           </button>
         </form>
@@ -61,7 +56,7 @@ export default {
   name: "LoginHomePage",
   data() {
     return {
-      msgError: "Email e senhas inválidos!",
+      msgError: "Email e senha inválidos!",
       showSnackbar: false,
       email: null,
       password: null,
@@ -77,7 +72,7 @@ export default {
           email: this.email,
           password: this.password,
         });
-        window.location.href = "./CompraVenda";
+        this.$router.push("/CompraVenda");
         const token = resp.data.data.token;
         localStorage.setItem("token", token);
         console.log(token);
@@ -105,6 +100,7 @@ export default {
   cursor: pointer;
   box-shadow: 5px 7px 3px 0 #00000080;
   border-radius: 8px;
+  color: black;
 }
 .cadastro {
   border: 1px solid rgb(0, 0, 0);
@@ -113,6 +109,7 @@ export default {
   cursor: pointer;
   box-shadow: 5px 7px 3px 0 #00000080;
   border-radius: 8px;
+  color: black;
 }
 img {
   position: relative;
@@ -187,7 +184,7 @@ button.submit-btn {
   border: 2px solid rgb(0, 0, 0);
   margin: 35px 0 10px;
   height: 32px;
-  font-size: 12px;
+  font-size: 14px;
   border-radius: 20px;
   padding: 0 10px;
   color: rgb(0, 0, 0);
@@ -199,7 +196,7 @@ span {
   font-size: 12px;
 }
 .card a {
-  color: rgb(32, 7, 7);
+  color: rgb(0, 72, 255);
   display: block;
   text-align: center;
   font-size: 13px;
@@ -222,9 +219,6 @@ footer {
 footer p {
   text-decoration: black;
   color: rgba(0, 0, 0, 0.981);
-}
-p {
-  color: red;
 }
 input:invalid {
   border-color: red;
