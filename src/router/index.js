@@ -44,6 +44,11 @@ const routes = [
     name: 'LoginHomePage',
     component: () => import('../components/LoginHomePage.vue')
   },
+  {
+    path: '/Imoveis',
+    name: 'Imoveis',
+    component: () => import('../views/Imoveis.vue')
+  }
 ]
 
 const router = new VueRouter({

@@ -49,7 +49,7 @@ h1 {
   margin: 180px 10px;
   display: flex;
   position: absolute;
-  width: 500px;
+  width: 460px;
   left: 450px;
 }
 .lgdImg2 {
@@ -59,11 +59,11 @@ h1 {
   text-align: center;
   text-align: justify;
   text-indent: 20px;
-  margin: 550px 10px;
+  margin: 490px 10px;
   display: flex;
   position: absolute;
-  width: 500px;
-  left: 30px;
+  width: 460px;
+  left: 65px;
 }
 p::first-letter {
   font-size: 150%;

@@ -11,7 +11,12 @@
             ><button class="cadastro">Cadastre-se</button></router-link
           >
         </nav>
-        <v-snackbar v-model="showSnackbar" absolute top  color="#E53935" multiLine="true">
+        <v-snackbar
+          v-model="showSnackbar"
+          absolute
+          top
+          color="#E53935"
+        >
           {{ msgError }}</v-snackbar
         >
         <form @submit="login">
@@ -68,17 +73,22 @@ export default {
       e.preventDefault();
 
       try {
+        
         const resp = await api.post("auth/login", {
           email: this.email,
           password: this.password,
         });
+        
         this.$router.push("/CompraVenda");
         const token = resp.data.data.token;
         localStorage.setItem("token", token);
         console.log(token);
+        this.email = ''
+        this.password = ''
       } catch (e) {
         this.error = e.message;
         this.showSnackbar = true;
+        
       }
     },
   },

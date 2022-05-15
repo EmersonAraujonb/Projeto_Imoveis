@@ -4,6 +4,7 @@
       <a href="/"><img src="./assets/NewLogo.png" alt="logoHome" /></a>
       <router-link to="/"><i class="fa-solid fa-house"></i> Home</router-link>
       <router-link to="/LoginCadastro"><i class="fa-solid fa-user-plus"></i> Login / Cadastro  </router-link>
+      <router-link to="/Imoveis">Imóveis</router-link>
     </nav>
     <transition name="fade" mode="out-in">
     <router-view />
