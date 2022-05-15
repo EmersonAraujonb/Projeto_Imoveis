@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>imoveis</h1>
-        <input type="search" name="search" v-model="search" id="search">
+        <input type="search" name="search" id="search">
         <button type="submit" class="buttonP">Pesquisar</button>
      <div class="container">
             <div v-for="imovel in imoveis" :key="imovel.id">{{ imovel.name }}</div>

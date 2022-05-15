@@ -40,20 +40,29 @@ export default {
       description: "",
       price: null,
       address: "",
-      number: null
+      number: null,
+      token: ''
     }
   },
   methods: {
     async pushImoveis(e) {
       e.preventDefault();
-      
-      const resp = await api.post("property/", {
-        title: this.title,
-        description: this.description,
-        price: this.price,
-        adrress: this.address,
-        number: this.number
-      });
+      this.token = localStorage.getItem("token");
+      try {
+        const resp = await api.post("/property", {
+          title: this.title,
+          description: this.description,
+          price: this.price,
+          adrress: this.address,
+          number: this.number,
+          headers: {
+            'Authorization': 'Bearer ' + this.token
+          }
+        });
+        console.log('enviou')
+      } catch (e) {
+        console.log('falhou')
+      }
     },
   },
 }
@@ -61,7 +70,7 @@ export default {
 <style scoped>
 .container {
   height: 600px;
-  background-color: rgba(112, 196, 192, 0.145);
+  background-color: rgb(255, 255, 255);
 }
 
 .cadastroImovel {

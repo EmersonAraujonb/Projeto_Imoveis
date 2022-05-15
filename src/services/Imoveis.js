@@ -2,6 +2,6 @@ import api from './../api'
 
 export default {
     listar:() => {
-        return api.get('auth')
+        return api.get('/property')
     }
 }
