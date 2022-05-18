@@ -3,8 +3,17 @@
     <nav>
       <a href="/"><img src="./assets/NewLogo.png" alt="logoHome" /></a>
       <router-link to="/"><i class="fa-solid fa-house"></i> Home</router-link>
-      <router-link to="/LoginCadastro"><i class="fa-solid fa-user-plus"></i> Login / Cadastro  </router-link>
       <router-link to="/Imoveis">Imóveis</router-link>
+  <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   Sessão
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" id="item1" href="/LoginHomePage">Login</a>
+    <a class="dropdown-item" id="item2" href="/CadastroHomePage">Cadastre-se</a>
+    <a class="dropdown-item" id="item3" href="#">Logout</a>
+  </div>
+</div>
     </nav>
     <transition name="fade" mode="out-in">
     <router-view />
@@ -17,13 +26,19 @@
         <a href="/Contato">contato</a> |
         <a href="/Sobre">Sobre</a>
       </div>
-      <p><strong>Emerson Araújo - © Corretor de Imovéis 2022</strong></p>
+      <p><strong> Copyright (c) Construtora Araújo 2022 - Todos os direitos reservados</strong></p>
     </footer>
   </div>
 </template>
 <script>
 export default {
   name: 'app',
+  data() {
+    return {
+
+    }
+  },
+
 };
 </script>
 <style>
@@ -46,7 +61,7 @@ transition-timing-function: ease;
 nav {
   padding: 0px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -63,5 +78,21 @@ nav a.router-link-exact-active {
 }
 .router-link-exact-active:hover, a:hover{
   color: rgb(2, 225, 255);
+}
+.dropdown-item{
+  background-color: white;
+}
+#dropdownMenuButton{
+  background-color: white;
+  color: black;
+}
+#item1:hover{
+  background-color: green;
+}
+#item2:hover{
+  background-color: blue;
+}
+#item3:hover{
+  background-color: red;
 }
 </style>

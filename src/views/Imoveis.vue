@@ -3,13 +3,19 @@
         <h1>imoveis</h1>
         <input type="search" name="search" id="search">
         <button type="submit" class="buttonP">Pesquisar</button>
-     <div class="container">
-            <div v-for="imovel in imoveis" :key="imovel.id">{{ imovel.name }}</div>
-        </div>
+        <ul class="container" v-for="imovel in imoveis" :key="imovel.id">
+            <li class="container">
+            {{imovel.title}} <br>
+            Descrição: {{imovel.description}} <br>
+            R$: {{imovel.price}} <br>
+            Local: {{imovel.address}}
+             </li>
+        </ul>
     </div>
 </template>
 <script>
 import Imoveis from './../services/Imoveis'
+import api from './../api'
 export default {
     data() {
         return {
@@ -53,7 +59,6 @@ export default {
 
 .buttonP:hover {
     background-color: #4CAF50;
-    /* Green */
     color: white;
 }
 
@@ -65,12 +70,14 @@ export default {
     gap: 10px;
     padding: 10px;
     color: black;
+    justify-content: center;
 
 }
 
-.container>div {
+.container > li {
     background-color: rgba(255, 255, 255, 0.8);
     text-align: center;
+    justify-content: center;
     padding: 20px 0;
     font-size: 30px;
     border: 1px solid black;

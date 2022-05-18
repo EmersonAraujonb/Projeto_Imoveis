@@ -1,6 +1,8 @@
 <template>
   <div class="container">
     <h1>Cadastre seu imóvel</h1>
+     <v-snackbar v-model="snackbar.show" absolute top :color="snackbar.color">
+          {{ snackbar.message }}</v-snackbar>
     <form @submit="pushImoveis">
       <div class="cadastroImovel">
         <label for="title" class="label">Titulo:</label>
@@ -36,6 +38,11 @@ import api from "./../api";
 export default {
   data() {
     return {
+      snackbar: {
+        show: false,
+        message: null,
+        color: null,
+      },
       title: "",
       description: "",
       price: null,
@@ -47,21 +54,29 @@ export default {
   methods: {
     async pushImoveis(e) {
       e.preventDefault();
-      this.token = localStorage.getItem("token");
+     const token = localStorage.getItem("token");
+       headers: {
+            Authorization: 'Bearer' + token
+          }
       try {
         const resp = await api.post("/property", {
           title: this.title,
           description: this.description,
           price: this.price,
-          adrress: this.address,
-          number: this.number,
-          headers: {
-            'Authorization': 'Bearer ' + this.token
-          }
+          address: this.address,
+          number: this.number
         });
-        console.log('enviou')
+        this.snackbar = {
+          message: "Imóvel cadastrado com sucesso!",
+          color: "#2E7D32",
+          show: true,
+        };
       } catch (e) {
-        console.log('falhou')
+        this.snackbar = {
+          message: "Error! Verifique os dados!",
+          color: "#E53935",
+          show: true,
+        };
       }
     },
   },
@@ -103,7 +118,7 @@ export default {
   border: 2px solid black;
   transition: .5s;
   position: absolute;
-  top: 600px;
+  top: 650px;
 }
 
 .btn:hover {

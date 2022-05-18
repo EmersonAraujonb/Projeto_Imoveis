@@ -194,7 +194,7 @@ hr {
   border: 1px solid rgb(0, 0, 0);
   margin: 6px 0;
   height: 32px;
-  border-radius: 20px;
+  border-radius: 20px 0 20px 0px;
   padding: 0 10px;
   box-sizing: border-box;
   outline: none;

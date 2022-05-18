@@ -73,7 +73,6 @@ export default {
       e.preventDefault();
 
       try {
-        
         const resp = await api.post("auth/login", {
           email: this.email,
           password: this.password,
@@ -88,7 +87,6 @@ export default {
       } catch (e) {
         this.error = e.message;
         this.showSnackbar = true;
-        
       }
     },
   },
@@ -182,7 +180,7 @@ hr {
   border: 1px solid rgb(0, 0, 0);
   margin: 6px 0;
   height: 32px;
-  border-radius: 20px;
+  border-radius: 20px 0 20px 0px;
   padding: 0 10px;
   box-sizing: border-box;
   outline: none;
