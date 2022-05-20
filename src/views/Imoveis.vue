@@ -1,85 +1,77 @@
 <template>
-    <div>
-        <h1>imoveis</h1>
-        <input type="search" name="search" id="search">
-        <button type="submit" class="buttonP">Pesquisar</button>
-        <ul class="container" v-for="imovel in imoveis" :key="imovel.id">
-            <li class="container">
-            {{imovel.title}} <br>
-            Descrição: {{imovel.description}} <br>
-            R$: {{imovel.price}} <br>
-            Local: {{imovel.address}}
-             </li>
-        </ul>
-    </div>
+  <div class="container">
+    <h1>imoveis</h1>
+    <div class="anuncio">Anuncie aqui seu imóvel! <button> Clique Aqui</button></div>
+    <ul class="container" v-for="imovel in imoveis" :key="imovel.id">
+      <li class="container">
+        <img src="./../services/assets/image2.jpg" />
+        {{ imovel.title }} <br />
+        Descrição: {{ imovel.description }} <br />
+        R$: {{ imovel.price }} <br />
+        Local: {{ imovel.address }}
+      </li>
+    </ul>
+  </div>
 </template>
 <script>
-import Imoveis from './../services/Imoveis'
-import api from './../api'
+import Imoveis from "./../services/Imoveis";
 export default {
-    data() {
-        return {
-            imoveis: [],
-            show: true,
-        }
-    },
-    mounted() {
-        Imoveis.listar().then(response => {
-            this.imoveis = response.data.data;
-        })
-    },
-    methods: {
-
-    },
-}
+  data() {
+    return {
+      imagens: [
+        { src: "./../services/assets/image2.jpg" },
+        { src: "./../services/assets/image10.jpg" },
+      ],
+      imoveis: [],
+      show: true,
+    };
+  },
+  created() {
+    Imoveis.listar().then((response) => {
+      this.imoveis = response.data.data;
+    });
+  },
+  methods: {},
+};
 </script>
 <style scoped>
-#search {
-    border: 1px solid black;
-}
-
-.button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
-
-.buttonP {
-    background-color: white;
-    color: black;
-    border: 2px solid #4dff00;
-}
-
-.buttonP:hover {
-    background-color: #4CAF50;
-    color: white;
-}
-
 .container {
-    display: grid;
-    height: auto;
-    align-content: center;
-    grid-template-columns: auto auto;
-    gap: 10px;
-    padding: 10px;
-    color: black;
-    justify-content: center;
-
+  display: grid;
+  height: auto;
+  grid-template-columns: auto;
+  gap: 30px;
+  padding: 10px;
+  color: black;
 }
 
 .container > li {
-    background-color: rgba(255, 255, 255, 0.8);
-    text-align: center;
-    justify-content: center;
-    padding: 20px 0;
-    font-size: 30px;
-    border: 1px solid black;
+  display: flex;
+  background-color: rgba(209, 209, 209, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+  border: 1px solid rgb(197, 196, 196, 0.8);
+  box-shadow: 7px 9px 3px 0 #00000080;
+}
+img {
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  height: 400px;
+}
+.anuncio {
+  padding-top: 12px;
+  height: 130%;
+  font-weight: bold;
+  background-color: rgb(255, 179, 0);
+  width: 100%;
+  box-shadow: 7px 9px 3px 0 #00000080;
+}
+.anuncio > button{
+    padding: 2px;
+    border-radius:20px;
+    margin-left: 100px;
+    background-color: black;
+    color: rgb(255, 179, 0);
 }
 </style>

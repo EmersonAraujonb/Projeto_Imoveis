@@ -11,8 +11,9 @@
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <a class="dropdown-item" id="item1" href="/LoginHomePage">Login</a>
     <a class="dropdown-item" id="item2" href="/CadastroHomePage">Cadastre-se</a>
-    <a class="dropdown-item" id="item3" href="#">Logout</a>
+    <a @click="Logout" class="dropdown-item" id="item3">Logout</a>
   </div>
+  <a  class="msgLogout" v-if="message">Logout realizado com sucesso!</a>
 </div>
     </nav>
     <transition name="fade" mode="out-in">
@@ -31,21 +32,31 @@
   </div>
 </template>
 <script>
+
 export default {
   name: 'app',
   data() {
     return {
-
+      message: false
     }
   },
+  methods: {
+    async Logout(e) {
+    localStorage.removeItem("token");
+     this.$router.push("/LoginHomePage");
+     this.message = true
+     setTimeout(() => {
+        this.message = false
+     }, 3000);
+  }
+    }
+   
 
 };
 </script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
 }
@@ -59,7 +70,6 @@ transition-timing-function: ease;
 }
 
 nav {
-  padding: 0px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -94,5 +104,12 @@ nav a.router-link-exact-active {
 }
 #item3:hover{
   background-color: red;
+}
+.msgLogout {
+  padding: 20 20px; 
+  display: flex;
+  background-color: red;
+  color: white;
+  align-items: center;
 }
 </style>

@@ -71,17 +71,14 @@ export default {
   methods: {
     async login(e) {
       e.preventDefault();
-
       try {
         const resp = await api.post("auth/login", {
           email: this.email,
           password: this.password,
         });
-        
         this.$router.push("/CompraVenda");
         const token = resp.data.data.token;
         localStorage.setItem("token", token);
-        console.log(token);
         this.email = ''
         this.password = ''
       } catch (e) {
@@ -115,7 +112,7 @@ export default {
   width: 100px;
   height: 50px;
   cursor: pointer;
-  box-shadow: 5px 7px 3px 0 #00000080;
+  
   border-radius: 8px;
   color: black;
 }
