@@ -87,15 +87,20 @@ export default {
 </script>
 <style scoped>
 #navbarCadastro {
+  display:flex;
+  justify-content:space-around;
   align-content: center;
   align-items: center;
   margin-left: 100px;
   margin-right: 100px;
   margin-top: -5px;
   margin-bottom: 30px;
+  background-color: rgb(187, 184, 234);
+   
 }
 
 .login {
+  font-weight: bold;
   color: black;
   width: 100px;
   height: 50px;
@@ -110,6 +115,7 @@ export default {
 }
 
 .cadastro {
+  font-weight: bold;
   color: black;
   width: 100px;
   height: 50px;
@@ -203,6 +209,7 @@ hr {
 }
 
 button.submit-btn {
+  font-weight: bold;
   width: 50%;
   border: 2px solid rgb(0, 0, 0);
   margin: 35px 0 10px;

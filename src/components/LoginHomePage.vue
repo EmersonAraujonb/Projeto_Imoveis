@@ -76,7 +76,7 @@ export default {
           email: this.email,
           password: this.password,
         });
-        this.$router.push("/CompraVenda");
+        this.$router.push("/");
         const token = resp.data.data.token;
         localStorage.setItem("token", token);
         this.email = ''
@@ -91,14 +91,17 @@ export default {
 </script>
 <style scoped>
 #navbarLogin {
-  align-content: center;
-  align-items: center;
+  display:flex;
   margin-left: 40px;
   margin-right: 40px;
   margin-top: -5px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
+ background-color:rgb(212, 228, 223);
+ justify-content:space-around;
+  align-items: center;
 }
 .login {
+  font-weight: bold;
   border: 1px solid rgb(0, 0, 0);
   width: 100px;
   height: 50px;
@@ -106,15 +109,18 @@ export default {
   box-shadow: 5px 7px 3px 0 #00000080;
   border-radius: 8px;
   color: black;
+  background-color: white;
 }
 .cadastro {
+ font-weight: bold;
   border: 1px solid rgb(0, 0, 0);
   width: 100px;
   height: 50px;
   cursor: pointer;
-  
+  background-color: white;
   border-radius: 8px;
   color: black;
+  box-shadow: 5px 7px 3px 0 #00000080;
 }
 img {
   position: relative;
@@ -185,6 +191,7 @@ hr {
   box-shadow: 5px 7px 3px 0 #00000080;
 }
 button.submit-btn {
+  font-weight: bold;
   width: 50%;
   border: 2px solid rgb(0, 0, 0);
   margin: 35px 0 10px;

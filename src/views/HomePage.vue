@@ -32,7 +32,7 @@ h1 {
   top: 180px;
   color: rgb(14, 40, 50);
   position: absolute;
-  left: 500px;
+  left: 465px;
 }
 .container {
   display: flex;

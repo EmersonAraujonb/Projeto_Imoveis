@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h1>imoveis</h1>
-    <div class="anuncio">Anuncie aqui seu imóvel! <button> Clique Aqui</button></div>
+    <div class="anuncio">Anuncie aqui seu imóvel! <button> <i class="fa-solid fa-arrow-right"> </i><router-link to="/CompraVenda" id="click"> <i class="fa-solid fa-building-user"></i> Clique Aqui </router-link><i class="fa-solid fa-arrow-left"></i></button></div>
     <ul class="container" v-for="imovel in imoveis" :key="imovel.id">
       <li class="container">
         <img src="./../services/assets/image2.jpg" />
@@ -72,6 +72,13 @@ img {
     border-radius:20px;
     margin-left: 100px;
     background-color: black;
-    color: rgb(255, 179, 0);
+    color: black;
+}
+.fa-solid.fa-arrow-right, .fa-solid.fa-arrow-left{
+ color: white;
+}
+#click{
+  color: white;
+  text-decoration: none;
 }
 </style>
