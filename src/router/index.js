@@ -14,15 +14,15 @@ const routes = [
     name: 'error404',
     component: () => import('../views/Error404.vue')
   },
- {
-   path: '/',
-   name: '/',
-   component: () => import('../views/HomePage.vue')
- },
+  {
+    path: '/',
+    name: '/',
+    component: () => import('../views/HomePage.vue')
+  },
   {
     path: '/LoginCadastro',
     name: 'Login|Cadastro',
-    component:  () => import('../views/LoginCadastro.vue')
+    component: () => import('../views/LoginCadastro.vue')
   },
   {
     path: '/about',
