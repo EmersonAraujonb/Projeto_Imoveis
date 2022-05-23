@@ -54,7 +54,7 @@ export default {
   methods: {
     async pushImoveis(e) {
       e.preventDefault();
-     const token = localStorage.getItem("token");
+     const token = sessionStorage.getItem("token");
        headers: {
             Authorization: 'Bearer' + token
           }
@@ -71,6 +71,7 @@ export default {
           color: "#2E7D32",
           show: true,
         };
+       
       } catch (e) {
         this.snackbar = {
           message: "Error! Verifique os dados!",

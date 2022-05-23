@@ -14,12 +14,12 @@
       <li class="container">
         <p><img src="./../services/assets/image2.jpg" /></p>
          <span>{{ imovel.title }}</span>
-        <span>Descrição: {{ imovel.description }} </span>
+        <span>Descrição: <br> {{ imovel.description }} </span>
         <span>R$: {{ imovel.price }}</span> 
         <span>Local: {{ imovel.address }} </span>
         <span>Nº: {{ imovel.number }}</span>
         <ul>
-          <button @click="remove" class="delete">Deletar</button>
+          <button @click="remove(imovel.id)" class="delete">Deletar</button>
           <button
             type="button"
             class="edit"
@@ -124,7 +124,7 @@
                   <button type="button" class="exit" data-dismiss="modal">
                     Fechar
                   </button>
-                  <button @click="edit" type="button" class="push">
+                  <button @click="edit(imovel)" type="button" class="push">
                     Atualizar
                   </button>
                 </div>
@@ -166,10 +166,10 @@ export default {
     });
   },
   methods: {
-    async edit(e) {
+   edit(id) {
       e.preventDefault();
       try {
-    const resp = await api.put(`/property/${_id}`, {
+    const resp = api.put(`/property/${id}`, {
           title: this.title,
           description: this.description,
           price: this.price,
@@ -181,7 +181,6 @@ export default {
           color: "#2E7D32",
           show: true,
         };
-        console.log('edit')
       } catch (e) {
         this.snackbar = {
           message: "Error! Verifique os dados!",
@@ -190,11 +189,11 @@ export default {
         };
       }
     },
-      async remove(id) {
-    const resp = await api.delete(`/property/${id}`, {
-          
-       });
+      remove(id) {
+        if(confirm('deseja excluir o imóvel?')){
+          const resp = api.delete(`/property/${id}`)
       }
+    }
     },
 };
 </script>
@@ -291,7 +290,7 @@ img {
   background-color: rgb(79, 79, 79);
 }
 span{
-  box-shadow: 7px 9px 3px 0 #00000080;
+  box-shadow: 0px 5px 0 #636363;
   padding: 2px;
 }
 </style>
