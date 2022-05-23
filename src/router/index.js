@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import LoginCadastro from '@/views/LoginCadastro.vue'
+
 import CadastroHomePage from '../components/CadastroHomePage.vue'
 import LoginHomePage from '../components/LoginHomePage.vue'
 import CompraVenda from '@/views/CompraVenda.vue'
@@ -18,11 +18,6 @@ const routes = [
     path: '/',
     name: '/',
     component: () => import('../views/HomePage.vue')
-  },
-  {
-    path: '/LoginCadastro',
-    name: 'Login|Cadastro',
-    component: () => import('../views/LoginCadastro.vue')
   },
   {
     path: '/about',
@@ -62,7 +57,7 @@ const router = new VueRouter({
   routes
 })
 router.beforeEach((to, from, next) => {
-  const token = localStorage.getItem('token')
+  const token = sessionStorage.getItem('token')
   if (to.name !== 'LoginHomePage' && !token) {
     next({ name: 'LoginHomePage' });
   } else {

@@ -12,14 +12,14 @@
     </div>
     <ul class="container" v-for="imovel in imoveis" :key="imovel.id">
       <li class="container">
-        <img src="./../services/assets/image2.jpg" />
-        {{ imovel.title }} <br />
-        Descrição: {{ imovel.description }} <br />
-        R$: {{ imovel.price }} <br />
-        Local: {{ imovel.address }} <br>
-         Nº: {{ imovel.number}}
+        <p><img src="./../services/assets/image2.jpg" /></p>
+         <span>{{ imovel.title }}</span>
+        <span>Descrição: {{ imovel.description }} </span>
+        <span>R$: {{ imovel.price }}</span> 
+        <span>Local: {{ imovel.address }} </span>
+        <span>Nº: {{ imovel.number }}</span>
         <ul>
-          <button @click="delet" class="delete">Deletar</button>
+          <button @click="remove" class="delete">Deletar</button>
           <button
             type="button"
             class="edit"
@@ -37,8 +37,14 @@
             aria-labelledby="exampleModalLabel"
             aria-hidden="true"
           >
-          <v-snackbar v-model="snackbar.show" absolute top :color="snackbar.color">
-          {{ snackbar.message }}</v-snackbar>
+            <v-snackbar
+              v-model="snackbar.show"
+              absolute
+              top
+              :color="snackbar.color"
+            >
+              {{ snackbar.message }}</v-snackbar
+            >
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -55,13 +61,11 @@
                 <div class="modal-body">
                   <form>
                     <div class="form-group">
-                      <label
-                        for="recipient-name"
-                        class="col-form-label"
+                      <label for="recipient-name" class="col-form-label"
                         >Titulo:</label
                       >
                       <input
-                      v-model="title"
+                        v-model="title"
                         type="text"
                         class="form-control"
                         id="recipient-name"
@@ -73,10 +77,10 @@
                         >Descrição:</label
                       >
                       <textarea
-                      v-model="description"
+                        v-model="description"
                         class="form-control"
                         id="message-text"
-                         placeholder="Ex: Casa com 2 quartos..."
+                        placeholder="Ex: Casa com 2 quartos..."
                       ></textarea>
                     </div>
                     <div class="form-group">
@@ -84,7 +88,7 @@
                         >Preço:</label
                       >
                       <input
-                      v-model="price"
+                        v-model="price"
                         type="text"
                         class="form-control"
                         id="recipient-name"
@@ -95,23 +99,23 @@
                         >Local:</label
                       >
                       <input
-                      v-model="address"
+                        v-model="address"
                         type="text"
                         class="form-control"
                         id="recipient-name"
-                         placeholder="Ex: Loteamento São João..."
+                        placeholder="Ex: Loteamento São João..."
                       />
                     </div>
-                     <div class="form-group">
+                    <div class="form-group">
                       <label for="recipient-name" class="col-form-label"
                         >Número:</label
                       >
                       <input
-                      v-model="number"
+                        v-model="number"
                         type="text"
                         class="form-control"
                         id="recipient-name"
-                         placeholder="Ex: 10, 20, 30..."
+                        placeholder="Ex: 10, 20, 30..."
                       />
                     </div>
                   </form>
@@ -143,7 +147,7 @@ export default {
         { src: "./../services/assets/image10.jpg" },
       ],
       imoveis: [],
-       snackbar: {
+      snackbar: {
         show: false,
         message: null,
         color: null,
@@ -153,6 +157,7 @@ export default {
       price: null,
       address: "",
       number: null,
+
     };
   },
   created() {
@@ -164,7 +169,7 @@ export default {
     async edit(e) {
       e.preventDefault();
       try {
-        const resp = await api.put("/property/", {
+    const resp = await api.put(`/property/${_id}`, {
           title: this.title,
           description: this.description,
           price: this.price,
@@ -172,10 +177,11 @@ export default {
           number: this.number,
         });
         this.snackbar = {
-          message: "Imóvel cadastrado com sucesso!",
+          message: "Imóvel atualizado com sucesso!",
           color: "#2E7D32",
           show: true,
         };
+        console.log('edit')
       } catch (e) {
         this.snackbar = {
           message: "Error! Verifique os dados!",
@@ -184,10 +190,12 @@ export default {
         };
       }
     },
-    delet() {
-      console.log("delet");
+      async remove(id) {
+    const resp = await api.delete(`/property/${id}`, {
+          
+       });
+      }
     },
-  },
 };
 </script>
 <style scoped>
@@ -196,24 +204,25 @@ export default {
   height: auto;
   grid-template-columns: auto;
   gap: 30px;
-  padding: 10px;
   color: black;
+  flex-direction: column;
+
 }
 
 .container > li {
   display: flex;
   background-color: rgba(209, 209, 209, 0.8);
-  text-align: center;
   padding: 20px 0;
-  font-size: 30px;
+  font-size: 20px;
   border: 1px solid rgb(197, 196, 196, 0.8);
   box-shadow: 7px 9px 3px 0 #00000080;
+  text-align: center;
 }
 img {
-  align-items: center;
-  justify-content: center;
-  width: 400px;
-  height: 400px;
+  
+  max-width: 300px;
+  max-height: 300px;
+
 }
 .anuncio {
   padding-top: 12px;
@@ -280,5 +289,9 @@ img {
 }
 .exit:hover {
   background-color: rgb(79, 79, 79);
+}
+span{
+  box-shadow: 7px 9px 3px 0 #00000080;
+  padding: 2px;
 }
 </style>

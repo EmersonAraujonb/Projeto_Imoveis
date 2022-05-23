@@ -67,7 +67,6 @@ export default {
       password: null,
     };
   },
-
   methods: {
     async login(e) {
       e.preventDefault();
@@ -78,7 +77,7 @@ export default {
         });
         this.$router.push("/");
         const token = resp.data.data.token;
-        localStorage.setItem("token", token);
+        sessionStorage.setItem("token", token);
         this.email = ''
         this.password = ''
       } catch (e) {
