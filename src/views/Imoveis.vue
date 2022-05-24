@@ -14,12 +14,12 @@
       <li class="container">
         <p><img src="./../services/assets/image2.jpg" /></p>
          <span>{{ imovel.title }}</span>
-        <span>Descrição: <br> {{ imovel.description }} </span>
+        <span>Descrição: {{ imovel.description }} </span>
         <span>R$: {{ imovel.price }}</span> 
         <span>Local: {{ imovel.address }} </span>
         <span>Nº: {{ imovel.number }}</span>
         <ul>
-          <button @click="remove(imovel.id)" class="delete">Deletar</button>
+          <button @click="remove(imovel.id)" class="delete">Apagar</button>
           <button
             type="button"
             class="edit"
@@ -124,7 +124,7 @@
                   <button type="button" class="exit" data-dismiss="modal">
                     Fechar
                   </button>
-                  <button @click="edit(imovel)" type="button" class="push">
+                  <button @click="edit(imovel.id)" type="button" class="push">
                     Atualizar
                   </button>
                 </div>
@@ -166,16 +166,17 @@ export default {
     });
   },
   methods: {
-   edit(id) {
-      e.preventDefault();
+     async edit(id) {
       try {
-    const resp = api.put(`/property/${id}`, {
+    const resp = await api.put(`/property/${id}`, {
           title: this.title,
           description: this.description,
           price: this.price,
           address: this.address,
           number: this.number,
         });
+        console.log(id)
+        console.log(resp)
         this.snackbar = {
           message: "Imóvel atualizado com sucesso!",
           color: "#2E7D32",
@@ -191,7 +192,9 @@ export default {
     },
       remove(id) {
         if(confirm('deseja excluir o imóvel?')){
-          const resp = api.delete(`/property/${id}`)
+          const resp = api.delete(`/property/${id}`).then(()=>{
+            this.imoveis();
+          });
       }
     }
     },
@@ -219,8 +222,8 @@ export default {
 }
 img {
   
-  max-width: 300px;
-  max-height: 300px;
+  max-width: 400px;
+  max-height: 400px;
 
 }
 .anuncio {
@@ -290,7 +293,7 @@ img {
   background-color: rgb(79, 79, 79);
 }
 span{
-  box-shadow: 0px 5px 0 #636363;
+  box-shadow: 0px 5px 0 #000000;
   padding: 2px;
 }
 </style>

@@ -61,7 +61,7 @@ export default {
   },
   methods: {
     async Logout(e) {
-      localStorage.removeItem("token");
+      sessionStorage.removeItem("token");
       this.$router.push("/LoginHomePage");
       this.message = true;
       setTimeout(() => {

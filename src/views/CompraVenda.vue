@@ -71,7 +71,9 @@ export default {
           color: "#2E7D32",
           show: true,
         };
-       
+        setTimeout((pushImoveis = true) => {
+        this.$router.push("/imoveis");
+      }, 4000);
       } catch (e) {
         this.snackbar = {
           message: "Error! Verifique os dados!",
