@@ -13,9 +13,9 @@
     <ul class="container" v-for="imovel in imoveis" :key="imovel.id">
       <li class="container">
         <p><img src="./../services/assets/image2.jpg" /></p>
-         <span>{{ imovel.title }}</span>
+        <span>{{ imovel.title }}</span>
         <span>Descrição: {{ imovel.description }} </span>
-        <span>R$: {{ imovel.price }}</span> 
+        <span>R$: {{ imovel.price }}</span>
         <span>Local: {{ imovel.address }} </span>
         <span>Nº: {{ imovel.number }}</span>
         <ul>
@@ -65,7 +65,7 @@
                         >Titulo:</label
                       >
                       <input
-                        v-model="title"
+                        v-model="imovel.title"
                         type="text"
                         class="form-control"
                         id="recipient-name"
@@ -77,7 +77,7 @@
                         >Descrição:</label
                       >
                       <textarea
-                        v-model="description"
+                        v-model="imovel.description"
                         class="form-control"
                         id="message-text"
                         placeholder="Ex: Casa com 2 quartos..."
@@ -88,7 +88,7 @@
                         >Preço:</label
                       >
                       <input
-                        v-model="price"
+                        v-model="imovel.price"
                         type="text"
                         class="form-control"
                         id="recipient-name"
@@ -99,7 +99,7 @@
                         >Local:</label
                       >
                       <input
-                        v-model="address"
+                        v-model="imovel.address"
                         type="text"
                         class="form-control"
                         id="recipient-name"
@@ -111,7 +111,7 @@
                         >Número:</label
                       >
                       <input
-                        v-model="number"
+                        v-model="imovel.number"
                         type="text"
                         class="form-control"
                         id="recipient-name"
@@ -157,7 +157,6 @@ export default {
       price: null,
       address: "",
       number: null,
-
     };
   },
   created() {
@@ -166,17 +165,17 @@ export default {
     });
   },
   methods: {
-     async edit(id) {
+    async edit(id) {
       try {
-    const resp = await api.put(`/property/${id}`, {
+        const resp = await api.put(`/property/${id}`, {
           title: this.title,
           description: this.description,
           price: this.price,
-          address: this.address,
+          address: this.address ,
           number: this.number,
         });
-        console.log(id)
-        console.log(resp)
+        console.log(id);
+        console.log(resp);
         this.snackbar = {
           message: "Imóvel atualizado com sucesso!",
           color: "#2E7D32",
@@ -190,14 +189,14 @@ export default {
         };
       }
     },
-      remove(id) {
-        if(confirm('deseja excluir o imóvel?')){
-          const resp = api.delete(`/property/${id}`).then(()=>{
-            this.imoveis();
-          });
+    remove(id) {
+      if (confirm("deseja excluir o imóvel?")) {
+        const resp = api.delete(`/property/${id}`).then(() => {
+          this.imoveis();
+        });
       }
-    }
     },
+  },
 };
 </script>
 <style scoped>
@@ -208,7 +207,6 @@ export default {
   gap: 30px;
   color: black;
   flex-direction: column;
-
 }
 
 .container > li {
@@ -221,10 +219,8 @@ export default {
   text-align: center;
 }
 img {
-  
   max-width: 400px;
   max-height: 400px;
-
 }
 .anuncio {
   padding-top: 12px;
@@ -292,7 +288,7 @@ img {
 .exit:hover {
   background-color: rgb(79, 79, 79);
 }
-span{
+span {
   box-shadow: 0px 5px 0 #000000;
   padding: 2px;
 }
