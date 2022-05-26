@@ -167,7 +167,7 @@ export default {
   methods: {
     async edit(id) {
       try {
-        const resp = await api.put(`/property/${id}`, {
+        const resp = await api.put(`/property/{id}`, {
           title: this.title,
           description: this.description,
           price: this.price,

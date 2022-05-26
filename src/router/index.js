@@ -65,3 +65,14 @@ router.beforeEach((to, from, next) => {
   }
 });
 export default router
+// export default router
+// router.beforeEach((to, from, next) => {
+//   const token = sessionStorage.getItem('token')
+//   if (token && to.name === 'LoginHomePage') {
+//     return next(false)
+//   }else if (token || to.name === 'LoginHomePage') {
+// 		return next()
+// 	} else {
+//    return next({name: 'LoginHomePage'})
+//   }
+// });
