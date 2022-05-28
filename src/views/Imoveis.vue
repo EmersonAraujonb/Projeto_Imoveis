@@ -25,6 +25,7 @@
             class="edit"
             data-toggle="modal"
             data-target="#exampleModal"
+            @click="editar(imovel)"
           >
             Editar
           </button>
@@ -124,7 +125,7 @@
                   <button type="button" class="exit" data-dismiss="modal">
                     Fechar
                   </button>
-                  <button @click="edit(imovel.id)" type="button" class="push">
+                  <button @click="edit(imovel)" type="button" class="push">
                     Atualizar
                   </button>
                 </div>
@@ -152,35 +153,39 @@ export default {
         message: null,
         color: null,
       },
+      imovel:{
       title: "",
       description: "",
       price: null,
       address: "",
       number: null,
+      }
     };
   },
   created() {
-    Imoveis.listar().then((response) => {
-      this.imoveis = response.data.data;
-    });
+    this.listar();
   },
   methods: {
+    listar() {
+      Imoveis.listar().then((response) => {
+        this.imoveis = response.data.data;
+      });
+    },
     async edit(id) {
       try {
-        const resp = await api.put(`/property/{id}`, {
+        const resp = await api.put(`/property/${id}`, {
           title: this.title,
           description: this.description,
           price: this.price,
-          address: this.address ,
+          address: this.address,
           number: this.number,
         });
-        console.log(id);
-        console.log(resp);
         this.snackbar = {
           message: "Imóvel atualizado com sucesso!",
           color: "#2E7D32",
           show: true,
         };
+        this.listar();
       } catch (e) {
         this.snackbar = {
           message: "Error! Verifique os dados!",
@@ -191,11 +196,14 @@ export default {
     },
     remove(id) {
       if (confirm("deseja excluir o imóvel?")) {
-        const resp = api.delete(`/property/${id}`).then(() => {
-          this.imoveis();
+        api.delete(`/property/${id}`).then(() => {
+          this.listar();
         });
       }
     },
+    editar(imovel) {
+      this.imovel = imovel
+    }
   },
 };
 </script>

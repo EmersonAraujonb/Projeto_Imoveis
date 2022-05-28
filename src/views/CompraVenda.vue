@@ -26,12 +26,7 @@
         <button type="submit" class="btn">Cadastrar</button>
       </div>
     </form>
-    <label id="file">Imagens do imóvel:
-      <br>
-      <input type="file" name="image[]" id="file" multiple="multiple">
-    </label>
-
-  </div>
+    </div>
 </template>
 <script>
 import api from "./../api";

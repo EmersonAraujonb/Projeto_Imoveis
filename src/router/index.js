@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
 import CadastroHomePage from '../components/CadastroHomePage.vue'
 import LoginHomePage from '../components/LoginHomePage.vue'
 import CompraVenda from '@/views/CompraVenda.vue'
@@ -18,11 +17,6 @@ const routes = [
     path: '/',
     name: '/',
     component: () => import('../views/HomePage.vue')
-  },
-  {
-    path: '/about',
-    name: 'about',
-    component: () => import('../views/AboutView.vue')
   },
   {
     path: '/CompraVenda',

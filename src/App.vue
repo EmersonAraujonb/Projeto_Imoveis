@@ -6,7 +6,6 @@
       <router-link to="/Imoveis"
         ><i class="fa-solid fa-building"></i> Imóveis</router-link
       >
-
       <div class="dropdown">
         <button
           class="btn btn-secondary dropdown-toggle"
@@ -38,17 +37,6 @@
     <br />
     <br />
     <hr />
-    <footer>
-      <router-link to="/Contato" class="contato"
-        ><i class="fa-solid fa-comment-sms"></i> Contato</router-link
-      >
-      <p>
-        <strong>
-          Copyright (c) Construtora Araújo 2022 - Todos os direitos
-          reservados</strong
-        >
-      </p>
-    </footer>
   </div>
 </template>
 <script>
@@ -144,20 +132,5 @@ a:hover {
   color: white;
   align-items: center;
   color: black;
-}
-footer {
-  position: relative;
-  background-color: #808080;
-  height: 100px;
-  padding: 10px;
-}
-.contato {
-  padding: 10px;
-  color: white;
-  font-size: 16pt;
-  text-decoration: none;
-}
-.contato:hover {
-  color: white;
 }
 </style>
