@@ -26,6 +26,17 @@
         <button type="submit" class="btn">Cadastrar</button>
       </div>
     </form>
+     <div class="footer">
+      <router-link to="/Contato" class="contato"
+        ><i class="fa-solid fa-comment-sms"></i> Contato</router-link
+      >
+      <p>
+        <strong>
+          Copyright (c) Construtora Araújo 2022 - Todos os direitos
+          reservados</strong
+        >
+      </p>
+    </div>
     </div>
 </template>
 <script>
@@ -81,6 +92,7 @@ export default {
 }
 </script>
 <style scoped>
+
 .container {
   height: 600px;
   background-color: rgb(255, 255, 255);
@@ -155,5 +167,23 @@ export default {
   margin: 10px;
   position: relative;
   align-items: center left;
+}
+.footer {
+  position: absolute;
+  background-color: #808080;
+  height: 100px;
+  padding: 30px;
+  top: 780px;
+  width: 100%;
+  left: 0;
+}
+.contato {
+  padding: 10px;
+  color: white;
+  font-size: 16pt;
+  text-decoration: none;
+}
+.contato:hover {
+  color: white;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <img src="../assets/imagemHome.jpg" alt="predio" />
+    <img  class="imgHome1" src="../assets/imagemHome.jpg" alt="predio" />
     <h1>Encontre o imovél perfeito.</h1>
     <p class="lgdImg1">
       Compra e venda de imóveis, sem burocracia e enrolaçâo? É com a gente!
@@ -41,7 +41,7 @@ export default {
   background-color: #808080;
   height: 100px;
   padding: 30px;
-  top: 1000px;
+  top: 970px;
   width: 100%;
   left: 0;
 }
@@ -61,12 +61,13 @@ h1 {
   top: 180px;
   color: rgb(14, 40, 50);
   position: absolute;
-  left: 465px;
+  left: 630px;
 }
 .container {
   display: flex;
-  background-color: rgb(237, 234, 234);
-  border-radius: 5%;
+  border-radius: 2%;
+  margin:0;
+  padding: 0;
 }
 .lgdImg1 {
   font-family: "Courier New", Courier, monospace;
@@ -78,8 +79,8 @@ h1 {
   margin: 180px 10px;
   display: flex;
   position: absolute;
-  width: 460px;
-  left: 450px;
+  width: 500px;
+  left: 600px;
 }
 .lgdImg2 {
   font-family: "Courier New", Courier, monospace;
@@ -88,27 +89,30 @@ h1 {
   text-align: center;
   text-align: justify;
   text-indent: 20px;
-  margin: 490px 10px;
+  margin: 450px 10px;
   display: flex;
   position: absolute;
   width: 460px;
-  left: 65px;
+  left: 120px;
 }
 p::first-letter {
   font-size: 150%;
 }
-img {
-  padding: 30px;
+.imgHome1 {
+  position: relative;
+  margin-top: 40px;
   width: 400px;
   height: 400px;
+  border-radius: 50%;
+  margin-left: 130px;
 }
 .imgHome2 {
-  display: flex;
   position: relative;
   margin-top: 400px;
   width: 400px;
   height: 400px;
-  right: -80px;
+  left: 200px;
+  border-radius: 50%;
 }
 </style>
 
