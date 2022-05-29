@@ -35,6 +35,17 @@
         </div>
       </div>
     </div>
+     <div class="footer">
+      <router-link to="/Contato" class="contato"
+        ><i class="fa-solid fa-comment-sms"></i> Contato</router-link
+      >
+      <p>
+        <strong>
+          Copyright (c) Construtora Araújo 2022 - Todos os direitos
+          reservados</strong
+        >
+      </p>
+    </div>
   </div>
 </template>
 <script>
@@ -287,5 +298,24 @@ input+span::before {
   position: absolute;
   right: 10px;
   top: 1px;
+}
+.footer {
+  position: absolute;
+  background-color: #808080;
+  height: 100px;
+  padding: 0;
+  top: 650px;
+  width: 100%;
+  left: 0;
+  margin:0;
+}
+.contato {
+  padding: 10px;
+  color: white;
+  font-size: 16pt;
+  text-decoration: none;
+}
+.contato:hover {
+  color: white;
 }
 </style>

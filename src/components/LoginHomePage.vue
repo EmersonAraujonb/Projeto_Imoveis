@@ -43,8 +43,6 @@
           </button>
         </form>
         <a href="">Esqueceu a Senha?</a>
-        <br />
-        <hr />
         <div>
           <br />
           <p>
@@ -52,6 +50,17 @@
           </p>
         </div>
       </div>
+    </div>
+     <div class="footer">
+      <router-link to="/Contato" class="contato"
+        ><i class="fa-solid fa-comment-sms"></i> Contato</router-link
+      >
+      <p>
+        <strong>
+          Copyright (c) Construtora Araújo 2022 - Todos os direitos
+          reservados</strong
+        >
+      </p>
     </div>
   </div>
 </template>
@@ -259,5 +268,23 @@ input + span::before {
 #img {
   width: 20px;
   height: 20px;
+}
+.footer {
+  position: absolute;
+  background-color: #808080;
+  height: 100px;
+  padding: 30px;
+  top: 650px;
+  width: 100%;
+  left: 0;
+}
+.contato {
+  padding: 10px;
+  color: white;
+  font-size: 16pt;
+  text-decoration: none;
+}
+.contato:hover {
+  color: white;
 }
 </style>

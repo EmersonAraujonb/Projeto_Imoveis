@@ -58,10 +58,10 @@ body {
   width: 100%;
 }
 h1 {
-  top: 180px;
+  top: 130px;
   color: rgb(14, 40, 50);
   position: absolute;
-  left: 630px;
+  left: 420px;
 }
 .container {
   display: flex;
@@ -76,11 +76,12 @@ h1 {
   text-align: center;
   text-align: justify;
   text-indent: 20px;
-  margin: 180px 10px;
+  margin: 110px 10px;
   display: flex;
   position: absolute;
   width: 500px;
-  left: 600px;
+  left: 400px;
+  
 }
 .lgdImg2 {
   font-family: "Courier New", Courier, monospace;
@@ -93,7 +94,8 @@ h1 {
   display: flex;
   position: absolute;
   width: 460px;
-  left: 120px;
+  left: 30px;
+  vertical-align: text-bottom;
 }
 p::first-letter {
   font-size: 150%;
@@ -101,18 +103,19 @@ p::first-letter {
 .imgHome1 {
   position: relative;
   margin-top: 40px;
-  width: 400px;
-  height: 400px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
-  margin-left: 130px;
+  margin-left: 30px;
 }
 .imgHome2 {
   position: relative;
-  margin-top: 400px;
-  width: 400px;
-  height: 400px;
-  left: 200px;
+  margin-top: 450px;
+  width: 300px;
+  height: 300px;
+  left: 300px;
   border-radius: 50%;
+
 }
 </style>
 
