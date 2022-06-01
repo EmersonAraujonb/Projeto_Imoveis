@@ -1,32 +1,63 @@
 <template>
   <div class="container">
     <h1>Cadastre seu imóvel</h1>
-     <v-snackbar v-model="snackbar.show" absolute top :color="snackbar.color">
-          {{ snackbar.message }}</v-snackbar>
+    <v-snackbar v-model="snackbar.show" absolute top :color="snackbar.color">
+      {{ snackbar.message }}</v-snackbar
+    >
     <form @submit="pushImoveis">
       <div class="cadastroImovel">
         <label for="title" class="label">Titulo:</label>
-        <input type="text" class="input" v-model="title" placeholder="Titulo..." required>
+        <input
+          type="text"
+          class="input"
+          v-model="title"
+          placeholder="Titulo..."
+          required
+        />
       </div>
       <div class="cadastroImovel">
         <label for="title" class="label">Descrição:</label>
-        <input type="text" v-model="description" class="input" placeholder="Descrição..." required>
+        <input
+          type="text"
+          v-model="description"
+          class="input"
+          placeholder="Descrição..."
+          required
+        />
       </div>
       <div class="cadastroImovel">
         <label for="title" class="label">Preço:</label>
-        <input type="text" v-model="price" class="input" placeholder="Preço..." required>
+        <input
+          type="text"
+          v-model="price"
+          class="input"
+          placeholder="Preço..."
+          required
+        />
       </div>
       <div class="cadastroImovel">
         <label for="title" class="label">Endereço:</label>
-        <input type="text" v-model="address" class="input" placeholder="Endereço..." required>
+        <input
+          type="text"
+          v-model="address"
+          class="input"
+          placeholder="Endereço..."
+          required
+        />
       </div>
       <div class="cadastroImovel">
         <label for="title" class="label">Número:</label>
-        <input type="text" v-model="number" class="input" placeholder="Número..." required>
+        <input
+          type="text"
+          v-model="number"
+          class="input"
+          placeholder="Número..."
+          required
+        />
         <button type="submit" class="btn">Cadastrar</button>
       </div>
     </form>
-     <div class="footer">
+    <div class="footer">
       <router-link to="/Contato" class="contato"
         ><i class="fa-solid fa-comment-sms"></i> Contato</router-link
       >
@@ -37,7 +68,7 @@
         >
       </p>
     </div>
-    </div>
+  </div>
 </template>
 <script>
 import api from "./../api";
@@ -54,23 +85,23 @@ export default {
       price: null,
       address: "",
       number: null,
-      token: ''
-    }
+      token: "",
+    };
   },
   methods: {
     async pushImoveis(e) {
       e.preventDefault();
-     const token = sessionStorage.getItem("token");
-       headers: {
-            Authorization: 'Bearer' + token
-          }
+      const token = sessionStorage.getItem("token");
+      headers: {
+        Authorization: "Bearer" + token;
+      }
       try {
         const resp = await api.post("/property", {
           title: this.title,
           description: this.description,
           price: this.price,
           address: this.address,
-          number: this.number
+          number: this.number,
         });
         this.snackbar = {
           message: "Imóvel cadastrado com sucesso!",
@@ -78,8 +109,8 @@ export default {
           show: true,
         };
         setTimeout((pushImoveis = true) => {
-        this.$router.push("/imoveis");
-      }, 4000);
+          this.$router.push("/imoveis");
+        }, 4000);
       } catch (e) {
         this.snackbar = {
           message: "Error! Verifique os dados!",
@@ -89,10 +120,9 @@ export default {
       }
     },
   },
-}
+};
 </script>
 <style scoped>
-
 .container {
   height: 600px;
   background-color: rgb(255, 255, 255);
@@ -113,10 +143,11 @@ export default {
 }
 
 .cadastroImovel3 {
-  display: flex;
+  
   align-items: center;
   justify-content: center;
   padding: 10px;
+  display: flex;
 }
 
 .btn {
@@ -126,14 +157,14 @@ export default {
   width: 100px;
   height: 50px;
   border: 2px solid black;
-  transition: .5s;
+  transition: 0.5s;
   position: absolute;
   top: 650px;
 }
 
 .btn:hover {
   background-color: transparent;
-  color: green
+  color: green;
 }
 
 .label {

@@ -135,7 +135,7 @@
         </ul>
       </li>
     </ul>
-     <div class="footer">
+    <div class="footer">
       <router-link to="/Contato" class="contato"
         ><i class="fa-solid fa-comment-sms"></i> Contato</router-link
       >
@@ -164,13 +164,13 @@ export default {
         message: null,
         color: null,
       },
-      imovel:{
-      title: "",
-      description: "",
-      price: null,
-      address: "",
-      number: null,
-      }
+      imovel: {
+        title: "",
+        description: "",
+        price: null,
+        address: "",
+        number: null,
+      },
     };
   },
   created() {
@@ -213,8 +213,8 @@ export default {
       }
     },
     editar(imovel) {
-      this.imovel = imovel
-    }
+      this.imovel = imovel;
+    },
   },
 };
 </script>
@@ -318,7 +318,7 @@ span {
   padding: 30px;
   width: 100%;
   left: 0;
-  position:relative;
+  position: relative;
 }
 .contato {
   padding: 10px;
