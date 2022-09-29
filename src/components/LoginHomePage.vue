@@ -57,7 +57,7 @@
       >
       <p>
         <strong>
-          Copyright (c) Construtora Araújo 2022 - Todos os direitos
+          Copyright (c) Construtora Araújo {{ new Date().getFullYear() }} - Todos os direitos
           reservados</strong
         >
       </p>
